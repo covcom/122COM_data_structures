@@ -26,7 +26,6 @@ class Stack:
 
         # COMPLETE ME
         return 0
-#END SOLUTIUON
 
     def top( self ):
         """ Returns the value currently stored at the top of the 
