@@ -32,7 +32,7 @@ public:
 
     /** Initialise the stack, maxSize is the maximum number of
         values that can be stored in the stack at any time */
-    Stack( const int _maxSize ) : maxSize(maxSize), stack( new char[maxSize] )
+    Stack( const int _maxSize ) : maxSize(_maxSize), stack( new char[maxSize] )
     {
         pos = 0;
     }    
