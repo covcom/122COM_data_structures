@@ -1,3 +1,5 @@
+import sys
+
 class Queue:
     class Full(Exception):
         pass
