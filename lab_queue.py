@@ -1,5 +1,3 @@
-import sys
-
 class Queue:
     class Full(Exception):
         pass
@@ -57,6 +55,8 @@ class Queue:
 
 
 if __name__ == '__main__':
+    import sys
+
     errors = 0
     testvalues = 'abcde'
     q = Queue( len(testvalues) )
