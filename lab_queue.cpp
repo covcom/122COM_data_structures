@@ -98,6 +98,54 @@ public:
     }
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  ========================================================
+    Below this is the testing code for the queue class, feel 
+    free to have a look but you don't need to worry about it
+    ========================================================
+*/
 int main()
 {
     int errors = 0;
@@ -114,16 +162,24 @@ int main()
         cout << "Pushing " << c << endl;
 
         cout << "Test front of queue" << endl;
-        if( q.front() != testvalues[0] )
+        try
         {
-            cerr << "Error - the front of the queue is wrong, expected " << testvalues[0] << " but got " << q.front() << endl;
-            errors += 1;
-        }
+            if( q.front() != testvalues[0] )
+            {
+                cerr << "Error - the front of the queue is wrong, expected " << testvalues[0] << " but got " << q.front() << endl;
+                errors += 1;
+            }
 
-        cout << "Test back of queue" << endl;
-        if( q.back() != c )
+            cout << "Test back of queue" << endl;
+            if( q.back() != c )
+            {
+                cerr << "Error - last thing pushed was " << c << " but back of queue contains " << q.back() << endl;
+                errors += 1;
+            }
+        }
+        catch( Queue::Empty &error )
         {
-            cerr << "Error - last thing pushed was " << c << " but back of queue contains " << q.back() << endl;
+            cerr << "Error - raised an Empty exception when there should be values in the queue" << endl;
             errors += 1;
         }
 
