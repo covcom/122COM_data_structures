@@ -120,7 +120,7 @@ if __name__ == '__main__':
             errors += 1
 
         if s.num_items() != i:
-            print( 'Error in num_items()- stack should have %d values but claims it has %d values' % (i,s.num_items()) )
+            print( 'Error in num_items() or pop() - stack should have %d values but claims it has %d values' % (i,s.num_items()) )
             errors += 1
 
     # === empty test ====
