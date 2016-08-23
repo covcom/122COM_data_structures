@@ -53,7 +53,7 @@ public:
         exception if stack is full */
     void push( char value )
     {
-        if( num_items() < maxSize )
+        if( pos < maxSize )
         {
             stack[ pos ] = value;
             pos += 1;
@@ -81,6 +81,44 @@ public:
     }
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  ========================================================
+    Below this is the testing code for the stack class, feel 
+    free to have a look but you don't need to worry about it
+    ========================================================
+*/
 int main()
 {
     int errors = 0;
@@ -97,13 +135,13 @@ int main()
 
         if( s.top() != c )
         {
-            cerr << "Error - last thing pushed was " << c << " but top of stack contains " << s.top() << endl;
+            cerr << "Error in top() - last thing pushed was " << c << " but top of stack contains " << s.top() << endl;
             errors += 1;
         }
 
         if( s.num_items() != i+1 )
         {
-            cerr << "Error - pushed " << i+1 << " values but stack reports size of " << s.num_items() << endl;
+            cerr << "Error in num_items() - pushed " << i+1 << " values but stack reports size of " << s.num_items() << endl;
             errors += 1;
         }
     }
@@ -112,7 +150,7 @@ int main()
     try
     {
         s.push( 'f' );
-        cerr << "Error - tried to push to a full stack but no exception" << endl;
+        cerr << "Error in push() - tried to push to a full stack but no exception" << endl;
         errors += 1;
     }
     catch( Stack::Full& error )
@@ -128,13 +166,13 @@ int main()
 
         if( val != c )
         {
-            cerr << "Error - wrong value was popped from the stack, expecting " << c << " but got " << val << endl;
+            cerr << "Error in pop() - wrong value was popped from the stack, expecting " << c << " but got " << val << endl;
             errors += 1;
         }
     
         if( s.num_items() != i )
         {
-            cerr << "Error - stack should have " << i << " values but claims it has " << s.num_items() << " values" << endl;
+            cerr << "Error in num_items() or pop() - stack should have " << i << " values but claims it has " << s.num_items() << " values" << endl;
             errors += 1;
         }
     }
@@ -143,7 +181,7 @@ int main()
     try
     {
         s.pop();
-        cerr << "Error - tried to pop from an empty stack but no exception" << endl;
+        cerr << "Error in pop() - tried to pop from an empty stack but no exception" << endl;
         errors += 1;
     }
     catch( Stack::Empty& error )
@@ -152,7 +190,7 @@ int main()
     try
     {
         s.top();
-        cerr << "Error - tried to get top off an empty stack but no exception" << endl;
+        cerr << "Error in top() - tried to get top off an empty stack but no exception" << endl;
         errors += 1;
     }
     catch( Stack::Empty& error )
