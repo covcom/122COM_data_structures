@@ -54,6 +54,46 @@ class Queue:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+''' ========================================================
+    Below this is the testing code for the stack class, feel 
+    free to have a look but you don't need to worry about it
+    ========================================================
+'''
 if __name__ == '__main__':
     import sys
 
@@ -68,25 +108,30 @@ if __name__ == '__main__':
 
         print( 'Pushing %s' % c )
 
-        print( 'Test front of queue' )
-        if q.front() != testvalues[0]:
-            print( 'Error - the front of the queue is wrong, expected %s but got %s' % (testvalues[0], q.front()) )
-            errors += 1
+        try:
+            print( 'Test front of queue' )
+            if q.front() != testvalues[0]:
+                print( 'Error in front() - the front of the queue is wrong, expected %s but got %s' % (testvalues[0], q.front()) )
+                errors += 1
 
-        print( 'Test back of queue' )
-        if q.back() != c:
-            print( 'Error - last thing pushed was %s but back of the queue contains %s' % (c, q.back()) )
-            errors += 1
+            print( 'Test back of queue' )
+            if q.back() != c:
+                print( 'Error in back() - last thing pushed was %s but back of the queue contains %s' % (c, q.back()) )
+                errors += 1
+                
+        except Queue.Empty:
+            print( 'Error - raised an Empty exception when there should be values in the queue' )
+            errors += 1;
 
         print( 'Test size of queue' )
         if q.num_items() != i+1:
-            print( 'Error - pushed %d values but queue reports size of %d' % (i+1,q.num_items()) )
+            print( 'Error in num_items() - pushed %d values but queue reports size of %d' % (i+1,q.num_items()) )
             errors += 1
 
     # === is full test ======
     try:
         q.push( 'f' )
-        print( 'Error - tried to push to a full queue but no exception' )
+        print( 'Error in push() - tried to push to a full queue but no exception' )
         errors += 1
     except Queue.Full:
         pass
@@ -99,25 +144,25 @@ if __name__ == '__main__':
         print( 'Popping %s' % val )
 
         if val != c:
-            print( 'Error - wrong value was popped from the queue, expecting %s but got %s' % (c, val) )
+            print( 'Error in pop() - wrong value was popped from the queue, expecting %s but got %s' % (c, val) )
             errors += 1
 
         expectedsize = len(testvalues)-i-1
         if q.num_items() != expectedsize:
-            print( 'Error - queue should have %d values but claims it has %d values' % (expectedsize,q.num_items()) )
+            print( 'Error in num_items() - queue should have %d values but claims it has %d values' % (expectedsize,q.num_items()) )
             errors += 1
 
     # === empty test ====
     try:
         q.pop()
-        print( 'Error - tried to pop from an empty queue but no exception' )
+        print( 'Error in pop() - tried to pop from an empty queue but no exception' )
         errors += 1
     except Queue.Empty:
         pass
 
     try:
         q.front()
-        print( 'Error - tried to get top of an empty queue but no exception' )
+        print( 'Error in front() - tried to get top of an empty queue but no exception' )
         errors += 1
     except Queue.Empty:
         pass

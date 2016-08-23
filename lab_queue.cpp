@@ -166,14 +166,14 @@ int main()
         {
             if( q.front() != testvalues[0] )
             {
-                cerr << "Error - the front of the queue is wrong, expected " << testvalues[0] << " but got " << q.front() << endl;
+                cerr << "Error in front() - the front of the queue is wrong, expected " << testvalues[0] << " but got " << q.front() << endl;
                 errors += 1;
             }
 
             cout << "Test back of queue" << endl;
             if( q.back() != c )
             {
-                cerr << "Error - last thing pushed was " << c << " but back of queue contains " << q.back() << endl;
+                cerr << "Error in back() - last thing pushed was " << c << " but back of queue contains " << q.back() << endl;
                 errors += 1;
             }
         }
@@ -186,7 +186,7 @@ int main()
         cout << "Test size of queue" << endl;
         if( q.num_items() != i+1 )
         {
-            cerr << "Error - pushed " << i+1 << " values but queue reports size of " << q.num_items() << endl;
+            cerr << "Error in num_items() - pushed " << i+1 << " values but queue reports size of " << q.num_items() << endl;
             errors += 1;
         }
     }
@@ -195,7 +195,7 @@ int main()
     try
     {
         q.push( 'f' );
-        cerr << "Error - tried to push to a full queue but no exception" << endl;
+        cerr << "Error in push() - tried to push to a full queue but no exception" << endl;
         errors += 1;
     }
     catch( Queue::Full& error )
@@ -211,14 +211,14 @@ int main()
 
         if( val != c )
         {
-            cerr << "Error - wrong value was popped from the queue, expecting " << c << " but got " << val << endl;
+            cerr << "Error in pop() - wrong value was popped from the queue, expecting " << c << " but got " << val << endl;
             errors += 1;
         }
     
         int expectedsize = testvalues.length()-i-1;
         if( q.num_items() != expectedsize )
         {
-            cerr << "Error - queue should have " << expectedsize << " values but claims it has " << q.num_items() << " values" << endl;
+            cerr << "Error in num_items() - queue should have " << expectedsize << " values but claims it has " << q.num_items() << " values" << endl;
             errors += 1;
         }
     }
@@ -227,7 +227,7 @@ int main()
     try
     {
         q.pop();
-        cerr << "Error - tried to pop from an empty queue but no exception" << endl;
+        cerr << "Error in pop() - tried to pop from an empty queue but no exception" << endl;
         errors += 1;
     }
     catch( Queue::Empty& error )
@@ -236,7 +236,7 @@ int main()
     try
     {
         q.front();
-        cerr << "Error - tried to get front off an empty queue but no exception" << endl;
+        cerr << "Error in front() - tried to get front off an empty queue but no exception" << endl;
         errors += 1;
     }
     catch( Queue::Empty& error )
