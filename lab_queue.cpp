@@ -1,15 +1,14 @@
 #include <exception>
 #include <iostream>
-#include <memory>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Queue
 {
 private:
     const int maxSize;
-    unique_ptr<char[]> queue;
-    int items;
+    vector<char> queue;
 
 public:
     class Full: public exception
@@ -17,7 +16,7 @@ public:
     public:
         virtual const char* what() const throw()
           {
-            return "queue is full";
+            return "Queue is full";
           }
     };
 
@@ -26,15 +25,14 @@ public:
     public:
         virtual const char* what() const throw()
           {
-            return "queue is empty";
+            return "Queue is empty";
           }
     };
 
     /** Initialise the queue, maxSize is the maximum number of
         values that can be stored in the queue at any time **/
-    Queue( const int maxSize ) : maxSize(maxSize), queue( new char[maxSize] )
+    Queue( const int _maxSize ) : maxSize(_maxSize)
     {
-        items = 0;
     }    
 
     ~Queue()
@@ -43,7 +41,7 @@ public:
 
     /** Returns the number of values currently stored in the 
         queue **/
-    int num_items()
+    int num_items() const
     {
         // COMPLETE ME
         return 0;
@@ -55,8 +53,7 @@ public:
     {
         if( num_items() < maxSize )
         {
-            queue[ items ] = value;
-            items += 1;
+            queue.emplace_back(value);
         }
         else
         {
@@ -67,11 +64,11 @@ public:
     /** Returns the value currently stored at the front of the 
         queue, raises Queue::Empty exception is queue is 
         empty **/
-    char front()
+    char front() const
     {
         if( num_items() > 0 )
         {
-            return queue[0];
+            return queue.front();
         }
         else
         {
@@ -82,7 +79,7 @@ public:
     /** Returns the value currently stored at the back of the 
         queue, raises Queue.Empty exception if the queue is
         empty **/
-    char back()
+    char back() const
     {
         // COMPLETE ME
         return 0;

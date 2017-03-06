@@ -1,5 +1,5 @@
 #include <exception>
-#include <memory>
+#include <vector>
 #include <iostream>
 #include <string>
 using namespace std;
@@ -8,33 +8,31 @@ class Stack
 {
 private:
     const int maxSize;
-    unique_ptr<char[]> stack;
-    int pos;
+    vector<char> stack;
 
 public:
     class Full: public exception
     {
     public:
         virtual const char* what() const throw()
-          {
+        {
             return "Stack is full";
-          }
+        }
     };
 
     class Empty: public exception
     {
     public:
         virtual const char* what() const throw()
-          {
+        {
             return "Stack is empty";
-          }
+        }
     };
 
     /** Initialise the stack, maxSize is the maximum number of
         values that can be stored in the stack at any time */
-    Stack( const int _maxSize ) : maxSize(_maxSize), stack( new char[maxSize] )
+    Stack( const int _maxSize ) : maxSize(_maxSize)
     {
-        pos = 0;
     }    
 
     ~Stack()
@@ -43,7 +41,7 @@ public:
 
     /** Returns the number of values currently stored in the 
         stack */
-    int num_items()
+    int num_items() const
     {
         // REPLACE ME
         return 0;
@@ -53,10 +51,9 @@ public:
         exception if stack is full */
     void push( char value )
     {
-        if( pos < maxSize )
+        if( num_items() < maxSize )
         {
-            stack[ pos ] = value;
-            pos += 1;
+            stack.emplace_back( value );
         }
         else
         {
@@ -69,7 +66,6 @@ public:
         empty */
     char top()
     {
-        // COMPLETE ME
     }
 
     /** Removes and returns the value currently stored at the
@@ -77,7 +73,6 @@ public:
         is empty */
     char pop()
     {
-        // COMPLETE ME
     }
 };
 
