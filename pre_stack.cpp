@@ -33,13 +33,13 @@ public:
         values that can be stored in the stack at any time */
     Stack( const int _maxSize ) : maxSize(_maxSize)
     {
-    }    
+    }
 
     ~Stack()
     {
     }
 
-    /** Returns the number of values currently stored in the 
+    /** Returns the number of values currently stored in the
         stack */
     int num_items() const
     {
@@ -47,7 +47,7 @@ public:
         return 0;
     }
 
-    /** Add value to the top of the stack, raises Stack::Full 
+    /** Add value to the top of the stack, raises Stack::Full
         exception if stack is full */
     void push( char value )
     {
@@ -61,8 +61,8 @@ public:
         }
     }
 
-    /** Returns the value currently stored at the top of the 
-        stack, raises Stack::Empty exception if stack is 
+    /** Returns the value currently stored at the top of the
+        stack, raises Stack::Empty exception if stack is
         empty */
     char top()
     {
@@ -110,7 +110,7 @@ public:
 
 
 /*  ========================================================
-    Below this is the testing code for the stack class, feel 
+    Below this is the testing code for the stack class, feel
     free to have a look but you don't need to worry about it
     ========================================================
 */
@@ -164,7 +164,7 @@ int main()
             cerr << "Error in pop() - wrong value was popped from the stack, expecting " << c << " but got " << val << endl;
             errors += 1;
         }
-    
+
         if( s.num_items() != i )
         {
             cerr << "Error in num_items() or pop() - stack should have " << i << " values but claims it has " << s.num_items() << " values" << endl;
@@ -190,6 +190,8 @@ int main()
     }
     catch( Stack::Empty& error )
     {}
+
+    cout << "Finished testing" << endl;
 
     return errors;
 }

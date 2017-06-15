@@ -12,7 +12,7 @@ class Stack:
         self.__pos = 0
 
     def push( self, value ):
-        """ Add value to the top of the stack, raises Stack.Full 
+        """ Add value to the top of the stack, raises Stack.Full
             exception if stack is full """
         if self.__pos < self.__maxSize:
             self.__stack[self.__pos] = value
@@ -21,17 +21,17 @@ class Stack:
             raise self.Full( 'Can\'t push ' + str(value) )
 
     def num_items( self ):
-        """ Returns the number of values currently stored in the 
+        """ Returns the number of values currently stored in the
             stack """
 
         # COMPLETE ME
         return 0
 
     def top( self ):
-        """ Returns the value currently stored at the top of the 
-            stack, raises Stack.Empty exception if stack is 
+        """ Returns the value currently stored at the top of the
+            stack, raises Stack.Empty exception if stack is
             empty """
-        
+
         # COMPLETE ME
         pass
 
@@ -74,7 +74,7 @@ class Stack:
 
 
 ''' ========================================================
-    Below this is the testing code for the stack class, feel 
+    Below this is the testing code for the stack class, feel
     free to have a look but you don't need to worry about it
     ========================================================
 '''
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     errors = 0
     testvalues = 'abcde'
     s = Stack( len(testvalues) )
-    
+
     # === pushing test ======
     for i in range(len(testvalues)):
         c = testvalues[i]
@@ -137,5 +137,7 @@ if __name__ == '__main__':
         errors += 1
     except Stack.Empty:
         pass
+
+     print( 'Finished testing' )
 
     sys.exit(errors)
