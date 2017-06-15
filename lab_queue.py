@@ -12,7 +12,7 @@ class Queue:
         self.__items = 0
 
     def push( self, value ):
-        """ Add value to the top of the queue, raises queue.Full 
+        """ Add value to the top of the queue, raises queue.Full
             exception is queue is full """
         if self.num_items() < self.__maxSize:
             self.__queue[self.__items] = value
@@ -21,15 +21,15 @@ class Queue:
             raise self.Full( 'Can\'t push ' + str(value) )
 
     def num_items( self ):
-        """ Returns the number of values currently stored in the 
+        """ Returns the number of values currently stored in the
             queue """
 
-        # COMPLETE ME            
+        # COMPLETE ME
         return 0
 
     def front( self ):
-        """ Returns the value currently stored at the top of the 
-            queue, raises queue.Empty exception if queue is 
+        """ Returns the value currently stored at the top of the
+            queue, raises queue.Empty exception if queue is
             empty """
         if self.num_items() > 0:
             return self.__queue[0]
@@ -37,7 +37,7 @@ class Queue:
             raise self.Empty()
 
     def back( self ):
-        """ Returns the value currently stored at the back of the 
+        """ Returns the value currently stored at the back of the
             queue, raises Queue.Empty exception if the queue is
             empty """
 
@@ -90,7 +90,7 @@ class Queue:
 
 
 ''' ========================================================
-    Below this is the testing code for the stack class, feel 
+    Below this is the testing code for the stack class, feel
     free to have a look but you don't need to worry about it
     ========================================================
 '''
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     errors = 0
     testvalues = 'abcde'
     q = Queue( len(testvalues) )
-    
+
     # === pushing test ======
     for i in range(len(testvalues)):
         c = testvalues[i]
@@ -118,7 +118,7 @@ if __name__ == '__main__':
             if q.back() != c:
                 print( 'Error in back() - last thing pushed was %s but back of the queue contains %s' % (c, q.back()) )
                 errors += 1
-                
+
         except Queue.Empty:
             print( 'Error - raised an Empty exception when there should be values in the queue' )
             errors += 1;
@@ -166,5 +166,7 @@ if __name__ == '__main__':
         errors += 1
     except Queue.Empty:
         pass
+
+    print( "Finished testing" )
 
     sys.exit(errors)

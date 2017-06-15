@@ -33,13 +33,13 @@ public:
         values that can be stored in the queue at any time **/
     Queue( const int _maxSize ) : maxSize(_maxSize)
     {
-    }    
+    }
 
     ~Queue()
     {
     }
 
-    /** Returns the number of values currently stored in the 
+    /** Returns the number of values currently stored in the
         queue **/
     int num_items() const
     {
@@ -47,7 +47,7 @@ public:
         return 0;
     }
 
-    /** Add value to the front of the queue, raises Queue::Full 
+    /** Add value to the front of the queue, raises Queue::Full
         exception is queue is full **/
     void push( char value )
     {
@@ -61,8 +61,8 @@ public:
         }
     }
 
-    /** Returns the value currently stored at the front of the 
-        queue, raises Queue::Empty exception is queue is 
+    /** Returns the value currently stored at the front of the
+        queue, raises Queue::Empty exception is queue is
         empty **/
     char front() const
     {
@@ -76,7 +76,7 @@ public:
         }
     }
 
-    /** Returns the value currently stored at the back of the 
+    /** Returns the value currently stored at the back of the
         queue, raises Queue.Empty exception if the queue is
         empty **/
     char back() const
@@ -139,7 +139,7 @@ public:
 
 
 /*  ========================================================
-    Below this is the testing code for the queue class, feel 
+    Below this is the testing code for the queue class, feel
     free to have a look but you don't need to worry about it
     ========================================================
 */
@@ -211,7 +211,7 @@ int main()
             cerr << "Error in pop() - wrong value was popped from the queue, expecting " << c << " but got " << val << endl;
             errors += 1;
         }
-    
+
         int expectedsize = testvalues.length()-i-1;
         if( q.num_items() != expectedsize )
         {
@@ -238,6 +238,8 @@ int main()
     }
     catch( Queue::Empty& error )
     {}
+
+    cout << "Finished testing" << endl;
 
     return errors;
 }
